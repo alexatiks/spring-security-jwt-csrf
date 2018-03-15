@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend.iml" filepath="$PROJECT_DIR$/.idea/modules/backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend_main.iml" filepath="$PROJECT_DIR$/.idea/modules/backend_main.iml" group="backend" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend_test.iml" filepath="$PROJECT_DIR$/.idea/modules/backend_test.iml" group="backend" />
+      <module fileurl="file://$PROJECT_DIR$/frontend/frontend.iml" filepath="$PROJECT_DIR$/frontend/frontend.iml" group="backend" />
       <module fileurl="file://$PROJECT_DIR$/.idea/spring-security-jwt-csrf.iml" filepath="$PROJECT_DIR$/.idea/spring-security-jwt-csrf.iml" />
     </modules>
   </component>
