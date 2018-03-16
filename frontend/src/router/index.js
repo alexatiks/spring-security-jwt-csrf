@@ -6,7 +6,7 @@ import SignIn from '@/components/SignIn'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes: [
     {
@@ -26,3 +26,17 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  const requiresAuth = !to.matched.some(record => record.meta.nonRequiresAuth)
+  const isLoginPage = to.matched.some(record => record.meta.loginPage)
+  const isAuthenticated = localStorage.getItem("auth")
+  if (requiresAuth && !isAuthenticated) {
+    next('/signIn')
+  } else if (isLoginPage && isAuthenticated) {
+    router.push('/')
+  }
+  next()
+})
+
+export default router
