@@ -1,5 +1,6 @@
 import router from '@/router'
 import axios from 'axios'
+import { EventBus } from '../event-bus.js'
 
 export const actions = {
   userSignIn ({commit}, payload) {
@@ -13,6 +14,7 @@ export const actions = {
        commit ('setAuth', true)
        commit ('setLoading', false)
        commit ('setError', null)
+       EventBus.$emit('authenticated', 'User authenticated')
        router.push('/')
      })
     .catch(error => {
@@ -22,6 +24,7 @@ export const actions = {
   },
   userSignOut ({commit}) {
     commit ('clearAuth')
+    EventBus.$emit('authenticated', 'User not authenticated')
     router.push('/signIn')
   }
 }
