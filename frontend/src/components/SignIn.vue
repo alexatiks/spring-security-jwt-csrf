@@ -30,7 +30,7 @@
               required></v-text-field>
           </v-flex>
           <v-flex class="text-xs-center" mt-5>
-            <v-btn type="submit" dark color="teal lighten-1" autofocus>Sign In</v-btn>
+            <v-btn type="submit" :disabled="loading" dark color="teal lighten-1" autofocus>Sign In</v-btn>
           </v-flex>
         </v-layout>
       </form>
@@ -45,6 +45,14 @@
         username: '',
         password: '',
         alert: false
+      }
+    },
+    computed: {
+      error () {
+        return this.$store.getters.getError
+      },
+      loading () {
+        return this.$store.getters.getLoading
       }
     },
     methods: {

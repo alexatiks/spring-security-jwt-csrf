@@ -7,7 +7,10 @@ import VueResource from 'vue-resource'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import store from './store'
+import * as axios from "axios"
 
+// Setting up Axios on Vue Instance, for use via this.$axios
+Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 Vue.use(VueResource)
 Vue.use(Vuetify, {
