@@ -55,6 +55,18 @@
         return this.$store.getters.getLoading
       }
     },
+    watch: {
+      error (value) {
+        if (value) {
+          this.alert = true
+        }
+      },
+      alert (value) {
+        if (!value) {
+          this.$store.dispatch('setError', false)
+        }
+      }
+    },
     methods: {
       userSignIn () {
         this.$store.dispatch('userSignIn', {username: this.username, password: this.password})

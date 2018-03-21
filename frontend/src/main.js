@@ -9,15 +9,30 @@ import 'vuetify/dist/vuetify.min.css'
 import store from './store'
 import * as axios from "axios"
 
+axios.defaults.withCredentials = true
+
 // Setting up Axios on Vue Instance, for use via this.$axios
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 Vue.use(VueResource)
 Vue.use(Vuetify, {
   theme: {
-    primary: 'teal',
+    primary: 'teal'
   }
 })
+
+axios.interceptors.response.use(response => {
+    return Promise.resolve(response)
+  },
+  error => {
+    if (error.response.status === 401) {
+      store.dispatch('userSignOut')
+      router.replace('signIn')
+      return Promise.reject(error)
+    } else {
+      return Promise.reject(error.response);
+    }
+  })
 
 /* eslint-disable no-new */
 new Vue({
