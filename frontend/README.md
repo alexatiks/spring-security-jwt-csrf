@@ -1,21 +1,23 @@
 # frontend
 
-> A Vue.js project
+> Проект Vue.js 
 
-## Build Setup
+## Установка и запуск
 
 ``` bash
-# install dependencies
+# установка зависимостей
 npm install
 
-# serve with hot reload at localhost:8080
+# стартовать с хот-релоадом на localhost:8080
 npm run dev
 
-# build for production with minification
+# стартовать в продакшен
 npm run build
 
-# build for production and view the bundle analyzer report
+# сборка для продакшена и просмотр отчета анализатора пакетов
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+Подробное объяснение того, как все работает, [здесь](http://vuejs-templates.github.io/webpack/) 
+и 
+[здесь: (`docs for vue-loader`)](http://vuejs.github.io/vue-loader).
