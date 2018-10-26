@@ -1,31 +1,32 @@
 buildscript {
-	ext {
-		springBootVersion = '1.5.9.RELEASE'
-	}
 	repositories {
 		mavenCentral()
 	}
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.5.RELEASE")
 	}
 }
 
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
-group = 'com.alexatiks'
-version = '0.0.1-SNAPSHOT'
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+bootJar {
+	baseName = 'spring-security-jwt-csrf'
+	version =  '0.1.0'
+}
 
 repositories {
 	mavenCentral()
 }
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 dependencies {
 	compile("org.springframework.boot:spring-boot-starter-data-rest")
 	compile('org.springframework.boot:spring-boot-starter-security')
-	compile('io.jsonwebtoken:jjwt:0.9.0')
+	compile('io.jsonwebtoken:jjwt:0.9.1')
 }
