@@ -1,3 +1,5 @@
+[README in english](README.en.md)
+
 # JWT Spring Boot Security
 
 ## О проекте
@@ -65,7 +67,7 @@ Server Build Tools| Gradle
 ```sbtshell
 gradle bootRun
 ```
-или запустите из IDE класс `ru.steklopod.Application`.
+или запустите из IDE класс `com.alexatiks.Application`.
 
 _Приложение будет запущено на [http://localhost:8091](http://localhost:8091)._
 
