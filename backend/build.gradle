@@ -3,7 +3,7 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.5.RELEASE")
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.2.RELEASE")
 	}
 }
 
@@ -28,5 +28,7 @@ targetCompatibility = 1.8
 dependencies {
 	compile("org.springframework.boot:spring-boot-starter-data-rest")
 	compile('org.springframework.boot:spring-boot-starter-security')
-	compile('io.jsonwebtoken:jjwt:0.9.1')
+	compile('io.jsonwebtoken:jjwt:0.9.0')
+	//JAXB classes for Java 9, 10, 11
+	compile('javax.xml.bind:jaxb-api:2.3.0')
 }
