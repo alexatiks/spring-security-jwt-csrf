@@ -102,9 +102,9 @@ User - user:password
 
 #### Эндпоинты:
 ```
-/login - authentication endpoint with unrestricted access
-/secured - an example endpoint that is restricted to authorized users
-/onlyforadmin - an example endpoint that is restricted to authorized users with the role 'ADMIN'
+/login - эндпоинт аутентефикации authentication endpoint with unrestricted access
+/secured - пример эндпоинта, который разрешён только для авторизованных пользователей
+/onlyforadmin - пример эндпоинта, который разрешён только для пользователей с ролью 'ADMIN'
 ```
 
 #### Скриншоты
