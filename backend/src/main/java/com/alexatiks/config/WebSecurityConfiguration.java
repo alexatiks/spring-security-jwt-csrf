@@ -5,7 +5,6 @@ package com.alexatiks.config;
 import com.alexatiks.security.JWTAuthenticationFilter;
 import com.alexatiks.security.JWTLoginFilter;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -38,14 +37,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .cors()
             .and()
-                .csrf().disable()
-//                .ignoringAntMatchers("/login")
-//                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-//            .and()
+                .csrf()
+                .ignoringAntMatchers("/login")
+                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+            .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/").permitAll()
-                .antMatchers(HttpMethod.POST, "/login").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/onlyforadmin/**").hasAuthority("ADMIN")
+                .antMatchers("/secured/**").hasAnyAuthority("USER", "ADMIN")
+                .antMatchers("/**").permitAll()
             .and()
                 .addFilterBefore(new JWTLoginFilter("/login", authenticationManager()), UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(new JWTAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
@@ -55,6 +54,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
-                .withUser("admin").password("password").roles("ADMIN");
+                .withUser("admin").password("{noop}password").authorities("USER", "ADMIN")
+            .and()
+                .withUser("user").password("{noop}password").authorities("USER");
     }
 }
