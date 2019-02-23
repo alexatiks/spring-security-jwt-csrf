@@ -26,6 +26,7 @@ axios.interceptors.response.use(response => {
   },
   error => {
     if (error.response.status === 401) {
+      console.log('Unauthorized, logging out ...');
       store.dispatch('userSignOut')
       router.replace('signIn')
       return Promise.reject(error)

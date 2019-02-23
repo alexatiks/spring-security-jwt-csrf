@@ -15,7 +15,7 @@ export const actions = {
        commit ('setLoading', false)
        commit ('setError', null)
        EventBus.$emit('authenticated', 'User authenticated')
-       router.push('/')
+       router.push('/home')
      })
     .catch(error => {
       commit('setError', error.message)
