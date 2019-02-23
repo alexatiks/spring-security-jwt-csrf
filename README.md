@@ -2,14 +2,16 @@
 
 # JWT Spring Boot Security
 
+<p align="center">
+  <img src="https://github.com/alexatiks/spring-security-jwt-csrf/raw/master/screenshots/jwt-spring-security-1.png?raw=true" alt="JWT Spring Security Demo"/>
+</p>
+
 ## О проекте
 
 Это демонстрация аутентификации на основе токена с использованием **JSON Web Token** и 
 **CSRF**, **Spring Security**, **Spring Boot** и **Vue js**. Это решение частично основано на блогах
 [Где хранить ваши JWT-файлы - Cookies vs HTML5 Web Storage](https://stormpath.com/blog/where-to-store-your-jwts-cookies-vs-html5-web-storage) 
 и [Где хранить JWT в браузере? Как защитить от CSRF?](Https://stackoverflow.com/questions/27067251/where-to-store-jwt-in-browser-how-to-protect-against-csrf)
-
-[![Build Status](https://travis-ci.org/szerhusenBC/jwt-spring-security-demo.svg?branch=master)](https://travis-ci.org/szerhusenBC/jwt-spring-security-demo)
 
 ## Стек Технологий
 Компонент         | Технология
@@ -81,13 +83,40 @@ npm install
 
 npm start
 ```
-_Приложение будет запущено на  [http://localhost:8081](http://localhost:8081)._
+_Приложение будет запущено на  [http://localhost:8080](http://localhost:8080)._
 
 ___
 
-_Чтобы убить процесс на порту 8081 (Windows)_:
+_Чтобы убить процесс на порту 8080 (Windows)_:
 
 ```sbtshell
-1. netstat -ano | findstr 8081
+1. netstat -ano | findstr 8080
 2. taskkill /pid ПОРТ /F
 ``` 
+
+#### Аккаунты пользователей:
+```
+Admin - admin:password
+User - user:password
+```
+
+#### Эндпоинты:
+```
+/login - authentication endpoint with unrestricted access
+/secured - an example endpoint that is restricted to authorized users
+/onlyforadmin - an example endpoint that is restricted to authorized users with the role 'ADMIN'
+```
+
+#### Скриншоты
+
+<p align="center">
+  <img src="https://github.com/alexatiks/spring-security-jwt-csrf/raw/master/screenshots/jwt-spring-security-0.png?raw=true" alt="JWT Spring Security Demo"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/alexatiks/spring-security-jwt-csrf/raw/master/screenshots/jwt-spring-security-1.png?raw=true" alt="JWT Spring Security Demo"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/alexatiks/spring-security-jwt-csrf/raw/master/screenshots/jwt-spring-security-2.png?raw=true" alt="JWT Spring Security Demo"/>
+</p>

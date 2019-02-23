@@ -1,12 +1,13 @@
 # JWT Spring Security Demo
 
+<p align="center">
+  <img src="https://github.com/alexatiks/spring-security-jwt-csrf/raw/master/screenshots/jwt-spring-security-1.png?raw=true" alt="JWT Spring Security Demo"/>
+</p>
 
 ## About
 This is a demonstration of stateless token-based authentication using **JSON Web Token** and **CSRF** protection, **Spring Security**, **Spring Boot** and **Vue js**. This solution is partially based on the blog entries
 [Where to Store your JWTs – Cookies vs HTML5 Web Storage](https://stormpath.com/blog/where-to-store-your-jwts-cookies-vs-html5-web-storage) and [Where to store JWT in browser? How to protect against CSRF?
 ](https://stackoverflow.com/questions/27067251/where-to-store-jwt-in-browser-how-to-protect-against-csrf)
-
-[![Build Status](https://travis-ci.org/szerhusenBC/jwt-spring-security-demo.svg?branch=master)](https://travis-ci.org/szerhusenBC/jwt-spring-security-demo)
 
 ## Technology Stack
 Component         | Technology
@@ -74,6 +75,32 @@ npm start
 ```
 Application will be running at [http://localhost:8080](http://localhost:8080).
 
+#### User accounts:
+```
+Admin - admin:password
+User - user:password
+```
+
+#### Endpoints:
+```
+/login - authentication endpoint with unrestricted access
+/secured - an example endpoint that is restricted to authorized users
+/onlyforadmin - an example endpoint that is restricted to authorized users with the role 'ADMIN'
+```
+
+#### Screenshots
+
+<p align="center">
+  <img src="https://github.com/alexatiks/spring-security-jwt-csrf/raw/master/screenshots/jwt-spring-security-0.png?raw=true" alt="JWT Spring Security Demo"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/alexatiks/spring-security-jwt-csrf/raw/master/screenshots/jwt-spring-security-1.png?raw=true" alt="JWT Spring Security Demo"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/alexatiks/spring-security-jwt-csrf/raw/master/screenshots/jwt-spring-security-2.png?raw=true" alt="JWT Spring Security Demo"/>
+</p>
 
 ## Copyright and license
 
