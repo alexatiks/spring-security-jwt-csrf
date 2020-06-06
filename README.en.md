@@ -67,11 +67,11 @@ Application will be running at [http://localhost:8091](http://localhost:8091).
 # Navigate to frontend folder (should contain package.json )
 npm install
 
-npm start
+npm run serve
 
 # or
 
-# run start command from IDE
+# run serve command from IDE
 ```
 Application will be running at [http://localhost:8080](http://localhost:8080).
 

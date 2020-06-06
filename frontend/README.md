@@ -1,6 +1,6 @@
 # frontend
 
-> Проект Vue.js 
+> Проект Vue.js
 
 ## Установка и запуск
 
@@ -9,15 +9,15 @@
 npm install
 
 # стартовать с хот-релоадом на localhost:8080
-npm run dev
+npm run serve
 
 # стартовать в продакшен
 npm run build
 
-# сборка для продакшена и просмотр отчета анализатора пакетов
-npm run build --report
+# анализировать код и исправить ошибки
+npm run lint
 ```
 
-Подробное объяснение того, как все работает, [здесь](http://vuejs-templates.github.io/webpack/) 
-и 
+Подробное объяснение того, как все работает, [здесь](http://vuejs-templates.github.io/webpack/)
+и
 [здесь: (`docs for vue-loader`)](http://vuejs.github.io/vue-loader).
