@@ -12,29 +12,30 @@
 <script>
 export default {
   name: 'Home',
-  data () {
+  data() {
     return {
       data: '',
-      status: ''
-    }
+      status: '',
+    };
   },
-  created: function () {
+  created() {
     this.getHomePageInformation();
   },
   methods: {
     getHomePageInformation() {
       this.$axios
         .get('http://localhost:8091/test')
-        .then(response => {
-          console.log("Get response: ", response.data);
-          this.data = response.data
+        .then((response) => {
+          console.log('Get response: ', response.data);
+          this.data = response.data;
         })
-        .catch(error => {
+        .catch((error) => {
           this.alert = true;
+          console.error(error);
         });
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>

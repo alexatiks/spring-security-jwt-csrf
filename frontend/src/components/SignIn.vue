@@ -30,7 +30,15 @@
               required></v-text-field>
           </v-flex>
           <v-flex class="text-xs-center" mt-5>
-            <v-btn type="submit" :disabled="loading" dark color="teal lighten-1" autofocus>Sign In</v-btn>
+            <v-btn
+              type="submit"
+              :disabled="loading"
+              dark
+              color="teal lighten-1"
+              autofocus
+            >
+              Sign In
+            </v-btn>
           </v-flex>
         </v-layout>
       </form>
@@ -39,40 +47,40 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        username: '',
-        password: '',
-        alert: false
+export default {
+  data() {
+    return {
+      username: '',
+      password: '',
+      alert: false,
+    };
+  },
+  computed: {
+    error() {
+      return this.$store.getters.getError;
+    },
+    loading() {
+      return this.$store.getters.getLoading;
+    },
+  },
+  watch: {
+    error(value) {
+      if (value) {
+        this.alert = true;
       }
     },
-    computed: {
-      error () {
-        return this.$store.getters.getError
-      },
-      loading () {
-        return this.$store.getters.getLoading
+    alert(value) {
+      if (!value) {
+        this.$store.dispatch('setError', false);
       }
     },
-    watch: {
-      error (value) {
-        if (value) {
-          this.alert = true
-        }
-      },
-      alert (value) {
-        if (!value) {
-          this.$store.dispatch('setError', false)
-        }
-      }
+  },
+  methods: {
+    userSignIn() {
+      this.$store.dispatch('userSignIn', { username: this.username, password: this.password });
     },
-    methods: {
-      userSignIn () {
-        this.$store.dispatch('userSignIn', {username: this.username, password: this.password})
-      }
-    }
-  }
+  },
+};
 </script>
 
 

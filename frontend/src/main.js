@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import App from './App'
-import router from './router'
-import store from './store'
-import * as axios from "axios"
+import Vue from 'vue';
+import * as axios from 'axios';
+import App from './App.vue';
+import router from './router';
+import store from './store';
 import vuetify from './plugins/vuetify';
 
 axios.defaults.withCredentials = true;
@@ -16,18 +16,15 @@ Vue.config.productionTip = false;
 //   }
 // })
 
-axios.interceptors.response.use(response => {
-    return Promise.resolve(response)
-  },
-  error => {
+axios.interceptors.response.use((response) => Promise.resolve(response),
+  (error) => {
     if (error.response.status === 401) {
       console.log('Unauthorized, logging out ...');
       store.dispatch('userSignOut');
       router.replace('signIn');
-      return Promise.reject(error)
-    } else {
-      return Promise.reject(error.response);
+      return Promise.reject(error);
     }
+    return Promise.reject(error.response);
   });
 
 new Vue({

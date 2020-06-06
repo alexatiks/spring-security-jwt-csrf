@@ -34,47 +34,43 @@
 </template>
 
 <script>
-  import { EventBus } from './event-bus.js'
+import EventBus from './event-bus';
 
-  export default {
-    name: 'App',
-    data() {
-      return {
-        isAuthenticated: false
+export default {
+  name: 'App',
+  data() {
+    return {
+      isAuthenticated: false,
+    };
+  },
+  created() {
+    this.isAuthenticated = localStorage.getItem('auth');
+    // Use localstorage because isAuthenticated from $store is undefined when event is called
+    EventBus.$on('authenticated', () => {
+      this.isAuthenticated = localStorage.getItem('auth');
+    });
+  },
+  beforeDestroy() {
+    EventBus.$off('authenticated');
+  },
+  computed: {
+    menuItems() {
+      if (this.isAuthenticated) {
+        return [
+          { title: 'Home', path: '/home', icon: 'home' },
+          { title: 'Secured page', path: '/secured', icon: 'vpn_key' },
+        ];
       }
+      return [
+        { title: 'Home', path: '/home', icon: 'home' },
+        { title: 'Sign In', path: '/signIn', icon: 'lock_open' },
+      ];
     },
-    created () {
-      this.isAuthenticated = localStorage.getItem("auth")
-      //Use localstorage because isAuthenticated from $store is undefined when event is called
-      EventBus.$on('authenticated', () => {
-        this.isAuthenticated = localStorage.getItem("auth")
-      });
+  },
+  methods: {
+    userSignOut() {
+      this.$store.dispatch('userSignOut');
     },
-    beforeDestroy() {
-      EventBus.$off('authenticated')
-    },
-    computed: {
-      menuItems() {
-        if (this.isAuthenticated) {
-          return [
-            {title: 'Home', path: '/home', icon: 'home'},
-            {title: 'Secured page', path: '/secured', icon: 'vpn_key'}
-          ]
-        } else {
-          return [
-            {title: 'Home', path: '/home', icon: 'home'},
-            {title: 'Sign In', path: '/signIn', icon: 'lock_open'}
-          ]
-        }
-      }
-    },
-    methods: {
-      userSignOut() {
-        this.$store.dispatch('userSignOut')
-      }
-    }
-  }
+  },
+};
 </script>
-
-
-
