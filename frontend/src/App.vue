@@ -6,29 +6,42 @@
       dark
     >
       <v-toolbar-title>
-        <router-link to="/home" tag="span" style="cursor: pointer">
+        <router-link
+          to="/home"
+          tag="span"
+          style="cursor: pointer"
+        >
           Spring Security JWT CSRF Demo
         </router-link>
       </v-toolbar-title>
-      <v-spacer></v-spacer>
+      <v-spacer />
       <v-toolbar-items class="hidden-xs-only">
         <v-btn
-          text
           v-for="item in menuItems"
           :key="item.title"
-          :to="item.path">
-          <v-icon left>{{ item.icon }}</v-icon>
+          text
+          :to="item.path"
+        >
+          <v-icon left>
+            {{ item.icon }}
+          </v-icon>
           {{ item.title }}
         </v-btn>
-        <v-btn text @click="userSignOut" v-if="isAuthenticated">
-          <v-icon left>exit_to_app</v-icon>
+        <v-btn
+          v-if="isAuthenticated"
+          text
+          @click="userSignOut"
+        >
+          <v-icon left>
+            exit_to_app
+          </v-icon>
           Sign Out
         </v-btn>
       </v-toolbar-items>
     </v-app-bar>
 
     <v-content>
-      <router-view/>
+      <router-view />
     </v-content>
   </v-app>
 </template>
@@ -43,16 +56,6 @@ export default {
       isAuthenticated: false,
     };
   },
-  created() {
-    this.isAuthenticated = localStorage.getItem('auth');
-    // Use localstorage because isAuthenticated from $store is undefined when event is called
-    EventBus.$on('authenticated', () => {
-      this.isAuthenticated = localStorage.getItem('auth');
-    });
-  },
-  beforeDestroy() {
-    EventBus.$off('authenticated');
-  },
   computed: {
     menuItems() {
       if (this.isAuthenticated) {
@@ -66,6 +69,16 @@ export default {
         { title: 'Sign In', path: '/signIn', icon: 'lock_open' },
       ];
     },
+  },
+  created() {
+    this.isAuthenticated = localStorage.getItem('auth');
+    // Use localstorage because isAuthenticated from $store is undefined when event is called
+    EventBus.$on('authenticated', () => {
+      this.isAuthenticated = localStorage.getItem('auth');
+    });
+  },
+  beforeDestroy() {
+    EventBus.$off('authenticated');
   },
   methods: {
     userSignOut() {

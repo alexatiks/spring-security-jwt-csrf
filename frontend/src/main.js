@@ -10,11 +10,6 @@ axios.defaults.withCredentials = true;
 // Setting up Axios on Vue Instance, for use via this.$axios
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
-// Vue.use(Vuetify, {
-//   theme: {
-//     primary: 'teal'
-//   }
-// })
 
 axios.interceptors.response.use((response) => Promise.resolve(response),
   (error) => {

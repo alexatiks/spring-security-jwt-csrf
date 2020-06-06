@@ -1,38 +1,52 @@
 <template>
-  <v-layout column>
-    <v-flex xs12 class="text-xs-center" mt-5>
-      <h1>Secured area</h1>
-      <v-btn
-        dark
-        color="teal lighten-1"
-        @click="getSecuredUserInformation"
+  <v-container>
+    <v-layout row>
+      <v-flex
+        xs12
+        class="text-center"
+        mt-5
       >
-        Call secured user service
-      </v-btn>
-      <v-btn
-        dark
-        color="teal lighten-1"
-        @click="getSecuredAdminInformation"
-      >
-        Call secured admin service
-      </v-btn>
-      <v-btn
-        dark
-        color="teal lighten-1"
-        @click="postData"
-      >
-        Make secured POST request
-      </v-btn>
-    </v-flex>
+        <h1>Secured area</h1>
+        <v-btn
+          dark
+          color="teal lighten-1"
+          class="ma-2"
+          @click="getSecuredUserInformation"
+        >
+          Call secured user service
+        </v-btn>
+        <v-btn
+          dark
+          color="teal lighten-1"
+          class="ma-2"
+          @click="getSecuredAdminInformation"
+        >
+          Call secured admin service
+        </v-btn>
+        <v-btn
+          dark
+          color="teal lighten-1"
+          class="ma-2"
+          @click="postData"
+        >
+          Make secured POST request
+        </v-btn>
+      </v-flex>
 
-    <v-flex xs8 offset-xs3 class="text-xs-left" mt-5>
-      <h2>Request URL: {{responseObj.url}}</h2>
-      <h2>Request method: {{responseObj.method}}</h2>
-      <h2>Status code: {{responseObj.statusCode}}</h2>
-      <h2>Response: {{responseObj.msg}}</h2>
-      <h2>X-XSRF-TOKEN: {{responseObj.xsrfToken}}</h2>
-    </v-flex>
-  </v-layout>
+      <v-flex
+        xs8
+        offset-xs2
+        class="text-left"
+        mt-5
+      >
+        <h2>Request URL: {{ responseObj.url }}</h2>
+        <h2>Request method: {{ responseObj.method }}</h2>
+        <h2>Status code: {{ responseObj.statusCode }}</h2>
+        <h2>Response: {{ responseObj.msg }}</h2>
+        <h2>X-XSRF-TOKEN: {{ responseObj.xsrfToken }}</h2>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
