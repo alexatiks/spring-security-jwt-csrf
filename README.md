@@ -81,7 +81,7 @@ _Приложение будет запущено на [http://localhost:8091](h
 ```npm
 npm install
 
-npm start
+npm run serve
 ```
 _Приложение будет запущено на  [http://localhost:8080](http://localhost:8080)._
 
