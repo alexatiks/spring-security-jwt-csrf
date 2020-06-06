@@ -1,6 +1,8 @@
-export const state = {
-  isAuthenticated: localStorage.getItem("auth"),
+const state = {
+  isAuthenticated: localStorage.getItem('auth'),
   user: null,
   error: null,
-  loading: false
-}
+  loading: false,
+};
+
+export default state;
