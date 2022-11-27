@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "Alexey Ponomaryov <alexatiks@gmail.com>",
+  "author": "",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
